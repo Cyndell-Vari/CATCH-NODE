@@ -1,0 +1,226 @@
+[
+    {
+        "id": "bc1ffab9c3efd7e7",
+        "type": "tab",
+        "label": "Catch",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d1c6badfbbb4ba8a",
+        "type": "inject",
+        "z": "bc1ffab9c3efd7e7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 120,
+        "wires": [
+            [
+                "363ed3edec438f46"
+            ]
+        ]
+    },
+    {
+        "id": "363ed3edec438f46",
+        "type": "function",
+        "z": "bc1ffab9c3efd7e7",
+        "name": "function 1",
+        "func": "var msg4 = { payload:\"1\"};\nvar msg5 = { payload: \"2\" };\nvar msg6 = { payload: \"3\" };\nreturn [msg4, msg5, msg6];",
+        "outputs": 3,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 120,
+        "wires": [
+            [
+                "60b7d4172db7ded3"
+            ],
+            [
+                "3f41065ae842141e"
+            ],
+            [
+                "ad1dfed519289e17"
+            ]
+        ]
+    },
+    {
+        "id": "60b7d4172db7ded3",
+        "type": "debug",
+        "z": "bc1ffab9c3efd7e7",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "3f41065ae842141e",
+        "type": "debug",
+        "z": "bc1ffab9c3efd7e7",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "ad1dfed519289e17",
+        "type": "debug",
+        "z": "bc1ffab9c3efd7e7",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "12fdaf27a89f325a",
+        "type": "catch",
+        "z": "bc1ffab9c3efd7e7",
+        "name": "",
+        "scope": [
+            "363ed3edec438f46"
+        ],
+        "uncaught": false,
+        "x": 210,
+        "y": 240,
+        "wires": [
+            [
+                "c166e9194da140de"
+            ]
+        ]
+    },
+    {
+        "id": "c166e9194da140de",
+        "type": "debug",
+        "z": "bc1ffab9c3efd7e7",
+        "name": "errors",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "error.message",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "25828b29cd3b1984",
+        "type": "inject",
+        "z": "bc1ffab9c3efd7e7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "3",
+        "payloadType": "num",
+        "x": 130,
+        "y": 360,
+        "wires": [
+            [
+                "dcc5949ac10e52e8"
+            ]
+        ]
+    },
+    {
+        "id": "dcc5949ac10e52e8",
+        "type": "function",
+        "z": "bc1ffab9c3efd7e7",
+        "name": "EQUAL 3",
+        "func": "if(msg.payload==3)\n{\n    msg.payload ='correct';\n\n}\n{\n    node.node.error(\"my error message\", msg); \n\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "64d4dc6dadbc18b3",
+        "type": "catch",
+        "z": "bc1ffab9c3efd7e7",
+        "name": "",
+        "scope": [
+            "dcc5949ac10e52e8"
+        ],
+        "uncaught": false,
+        "x": 130,
+        "y": 440,
+        "wires": [
+            [
+                "eadbc9d5193b8a0f"
+            ]
+        ]
+    },
+    {
+        "id": "eadbc9d5193b8a0f",
+        "type": "debug",
+        "z": "bc1ffab9c3efd7e7",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 440,
+        "wires": []
+    }
+]
